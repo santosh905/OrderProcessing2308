@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OrderProcessingUnit;
+using OrderProcessingUnit.Common;
 
 namespace OrderProcessing.Core.Process
 {
