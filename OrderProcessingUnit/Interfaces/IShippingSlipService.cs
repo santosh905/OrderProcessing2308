@@ -1,4 +1,4 @@
-﻿namespace OrderProcessingUnit
+﻿namespace OrderProcessingUnit.Interfaces
 {
     public interface IShippingSlipService
     {
