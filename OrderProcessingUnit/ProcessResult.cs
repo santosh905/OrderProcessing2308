@@ -13,6 +13,8 @@ namespace OrderProcessingUnit
         public static readonly string Membership_result;
         public static readonly string Membership_Upgrade_Result;
         public static readonly string Video_Result;
+        public static readonly string EmailSentTo_Owner;
+        public static readonly string Commision_Generated_Toagent;
 
         static ProcessResult()
         {
@@ -21,6 +23,8 @@ namespace OrderProcessingUnit
             Membership_result = "Activate_that_membership";
             Membership_Upgrade_Result = "Apply_The_Upgrade";
             Video_Result = "Learning_to_Ski";
+            EmailSentTo_Owner = "EmailSent_To_Owner";
+            Commision_Generated_Toagent = "Commision_Generated_Toagent";
         }
 
     }
