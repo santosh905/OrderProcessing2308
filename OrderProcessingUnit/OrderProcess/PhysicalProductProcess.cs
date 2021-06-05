@@ -9,13 +9,13 @@ namespace OrderProcessingUnit.OrderProcess
 {
     public class PhysicalProductProcess : IProcess
     {
-        
-        public void process()
-        {
-            Console.WriteLine("generate a packing slip for shipping.");
-            OnGenerateCommision(EventArgs.Empty);
-        }
+        private IList<string> results = null;
+        private string name = "PhysicalProduct";
 
+        public PhysicalProductProcess()
+        {
+            results = new List<string>();
+        }
         protected virtual void OnGenerateCommision(EventArgs e)
         {
             EventHandler handler = GenerateCommision;
@@ -27,7 +27,10 @@ namespace OrderProcessingUnit.OrderProcess
 
         IList<string> IProcess.process()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("generate a packing slip for shipping.");
+            results.Add(ProcessResult.physical_Product_result);
+            OnGenerateCommision(EventArgs.Empty);
+            return results;
         }
 
         public event EventHandler GenerateCommision;

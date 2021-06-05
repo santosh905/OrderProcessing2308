@@ -14,5 +14,8 @@ namespace OrderProcessingUnit.Abstract
     public abstract class OrderProcessingBaseFactory
     {
         public abstract IProcess CreateProcess(ProductType productType);
+        public abstract List<string> RecievedEvents { get; }
     }
+
+    
 }

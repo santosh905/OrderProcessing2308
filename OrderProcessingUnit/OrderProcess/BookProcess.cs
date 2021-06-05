@@ -9,13 +9,14 @@ namespace OrderProcessingUnit.Orders
 {
     public class BookProcess : IProcess
     {
-        public void process()
-        {
-            Console.WriteLine("Create A Duplicate Packing Slip For The Royalty Department");
-            OnGenerateCommision(EventArgs.Empty);
-        }
+        IList<string> results = null;
+        private string name = "Book";
 
-        protected virtual void OnGenerateCommision(EventArgs e)
+        public BookProcess()
+        {
+            results = new List<string>();
+        }
+        protected virtual void OnGenerateCommision(BookProcess bookProcess, EventArgs e)
         {
             EventHandler handler = GenerateCommision;
             if (handler != null)
@@ -26,7 +27,10 @@ namespace OrderProcessingUnit.Orders
 
         IList<string> IProcess.process()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Create A Duplicate Packing Slip For The Royalty Department");
+            OnGenerateCommision(this,EventArgs.Empty);
+            results.Add(ProcessResult.book_result);
+            return results;
         }
 
         public event EventHandler GenerateCommision;

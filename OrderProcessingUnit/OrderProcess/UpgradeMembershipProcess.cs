@@ -9,10 +9,11 @@ namespace OrderProcessingUnit.OrderProcess
 {
     public class UpgradeMembershipProcess : IProcess
     {
-        public void process()
+        IList<string> results = null;
+        string name = "UpgradeMemberShip";
+        public UpgradeMembershipProcess()
         {
-            Console.WriteLine("apply theupgrade.");
-            OnMembershipOrUpgrade(EventArgs.Empty);
+            results = new List<string>();
         }
         protected virtual void OnMembershipOrUpgrade(EventArgs e)
         {
@@ -25,7 +26,10 @@ namespace OrderProcessingUnit.OrderProcess
 
         IList<string> IProcess.process()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("apply theupgrade.");
+            OnMembershipOrUpgrade(EventArgs.Empty);
+            results.Add(ProcessResult.Membership_Upgrade_Result);
+            return results;
         }
 
         public event EventHandler MembershipOrUpgrade;

@@ -9,13 +9,15 @@ namespace OrderProcessingUnit.OrderProcess
 {
     public class MembershipProcess : IProcess
     {
-        public void process()
-        {
-            Console.WriteLine("Activate that membership");
-            OnMembershipOrUpgrade(EventArgs.Empty);
-        }
+        IList<string> results = null;
+        string name = "MemberShip";
 
-        protected virtual void OnMembershipOrUpgrade(EventArgs e)
+        public MembershipProcess()
+        {
+            results = new List<string>();
+        }
+        
+        protected virtual void OnMembershipOrUpgrade(MembershipProcess membershipProcess, EventArgs e)
         {
             EventHandler handler = MembershipOrUpgrade;
             if (handler != null)
@@ -26,7 +28,10 @@ namespace OrderProcessingUnit.OrderProcess
 
         IList<string> IProcess.process()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Activate that membership");
+            OnMembershipOrUpgrade(this,EventArgs.Empty);
+            results.Add(ProcessResult.Membership_result);
+            return results;
         }
 
         public event EventHandler MembershipOrUpgrade;
